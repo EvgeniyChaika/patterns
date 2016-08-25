@@ -1,6 +1,9 @@
 package patterns.structural;
 
-import patterns.structural.composite.Employee;
+import patterns.structural.decorator.RedShapeDecorator;
+import patterns.structural.decorator.Shape;
+import patterns.structural.decorator.impl.Circle;
+import patterns.structural.decorator.impl.Rectangle;
 
 /**
  * Created on 19.08.16.
@@ -54,31 +57,47 @@ public class StartStructural {
 
 //--------------------------------------------- Composite -----------------------------------------------------
 
-        Employee CEO = new Employee("John", "CEO", 30000);
-        Employee headSales = new Employee("Robert", "Head Sales", 20000);
-        Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+//        Employee CEO = new Employee("John", "CEO", 30000);
+//        Employee headSales = new Employee("Robert", "Head Sales", 20000);
+//        Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
+//
+//        Employee clerk1 = new Employee("Laura", "Clerk", 10000);
+//        Employee clerk2 = new Employee("Bob", "Clerk", 10000);
+//
+//        Employee sales1 = new Employee("Richard", "Sales", 10000);
+//        Employee sales2 = new Employee("Rob", "Sales", 10000);
+//
+//        CEO.add(headSales);
+//        CEO.add(headMarketing);
+//
+//        headSales.add(sales1);
+//        headSales.add(sales2);
+//
+//        headMarketing.add(clerk1);
+//        headMarketing.add(clerk2);
+//
+//        System.out.println(CEO);
+//        for (Employee headEmployee : CEO.getSubordinates()) {
+//            System.out.println(headEmployee);
+//            for (Employee employee : headEmployee.getSubordinates()) {
+//                System.out.println(employee);
+//            }
+//        }
 
-        Employee clerk1 = new Employee("Laura", "Clerk", 10000);
-        Employee clerk2 = new Employee("Bob", "Clerk", 10000);
+//--------------------------------------------- Decorator -----------------------------------------------------
 
-        Employee sales1 = new Employee("Richard", "Sales", 10000);
-        Employee sales2 = new Employee("Rob", "Sales", 10000);
+        Shape circle = new Circle();
 
-        CEO.add(headSales);
-        CEO.add(headMarketing);
+        Shape redCircle = new RedShapeDecorator(new Circle());
+        Shape redRectangle = new RedShapeDecorator(new Rectangle());
 
-        headSales.add(sales1);
-        headSales.add(sales2);
+        System.out.println("Shape with normal border");
+        circle.draw();
 
-        headMarketing.add(clerk1);
-        headMarketing.add(clerk2);
+        System.out.println("\nCircle with red border");
+        redCircle.draw();
 
-        System.out.println(CEO);
-        for (Employee headEmployee : CEO.getSubordinates()) {
-            System.out.println(headEmployee);
-            for (Employee employee : headEmployee.getSubordinates()) {
-                System.out.println(employee);
-            }
-        }
+        System.out.println("\nRectangle with red border");
+        redRectangle.draw();
     }
 }
