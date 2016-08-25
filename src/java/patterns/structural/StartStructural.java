@@ -1,6 +1,7 @@
 package patterns.structural;
 
-import patterns.structural.facade.ShapeMaker;
+import patterns.structural.flyweight.ShapeFactory;
+import patterns.structural.flyweight.impl.Circle;
 
 /**
  * Created on 19.08.16.
@@ -99,10 +100,21 @@ public class StartStructural {
 
 //--------------------------------------------- Facade --------------------------------------------------------
 
-        ShapeMaker shapeMaker = new ShapeMaker();
+//        ShapeMaker shapeMaker = new ShapeMaker();
+//
+//        shapeMaker.drawCircle();
+//        shapeMaker.drawRectangle();
+//        shapeMaker.drawSquare();
 
-        shapeMaker.drawCircle();
-        shapeMaker.drawRectangle();
-        shapeMaker.drawSquare();
+//-------------------------------------------- Flyweight -----------------------------------------------------
+
+        for (int i = 0; i < 20; i++) {
+            Circle circle = (Circle) ShapeFactory.getCircle(ShapeFactory.getRandomColor());
+
+            circle.setX(ShapeFactory.getRandomX());
+            circle.setY(ShapeFactory.getRandomY());
+            circle.setRadius(ShapeFactory.getRandomRadius());
+            circle.draw();
+        }
     }
 }
