@@ -1,9 +1,6 @@
 package patterns.structural;
 
-import patterns.structural.decorator.RedShapeDecorator;
-import patterns.structural.decorator.Shape;
-import patterns.structural.decorator.impl.Circle;
-import patterns.structural.decorator.impl.Rectangle;
+import patterns.structural.facade.ShapeMaker;
 
 /**
  * Created on 19.08.16.
@@ -86,18 +83,26 @@ public class StartStructural {
 
 //--------------------------------------------- Decorator -----------------------------------------------------
 
-        Shape circle = new Circle();
+//        Shape circle = new Circle();
+//
+//        Shape redCircle = new RedShapeDecorator(new Circle());
+//        Shape redRectangle = new RedShapeDecorator(new Rectangle());
+//
+//        System.out.println("Shape with normal border");
+//        circle.draw();
+//
+//        System.out.println("\nCircle with red border");
+//        redCircle.draw();
+//
+//        System.out.println("\nRectangle with red border");
+//        redRectangle.draw();
 
-        Shape redCircle = new RedShapeDecorator(new Circle());
-        Shape redRectangle = new RedShapeDecorator(new Rectangle());
+//--------------------------------------------- Facade --------------------------------------------------------
 
-        System.out.println("Shape with normal border");
-        circle.draw();
+        ShapeMaker shapeMaker = new ShapeMaker();
 
-        System.out.println("\nCircle with red border");
-        redCircle.draw();
-
-        System.out.println("\nRectangle with red border");
-        redRectangle.draw();
+        shapeMaker.drawCircle();
+        shapeMaker.drawRectangle();
+        shapeMaker.drawSquare();
     }
 }
