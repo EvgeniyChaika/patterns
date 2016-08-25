@@ -1,14 +1,11 @@
 package patterns.structural;
 
-import patterns.structural.proxy.Image;
-import patterns.structural.proxy.impl.ProxyImage;
-
 /**
  * Created on 19.08.16.
  */
 public class StartStructural {
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
 
 //--------------------------------------------- Adapter ------------------------------------------------------
 
@@ -119,10 +116,10 @@ public class StartStructural {
 
 //---------------------------------------------- Proxy -------------------------------------------------------
 
-        Image image = new ProxyImage("foto.jpg");
-
-        image.display();
-        image.display();
-        image.display();
-    }
+//        Image image = new ProxyImage("foto.jpg");
+//
+//        image.display();
+//        image.display();
+//        image.display();
+//    }
 }
