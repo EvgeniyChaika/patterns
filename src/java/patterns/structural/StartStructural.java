@@ -1,12 +1,6 @@
 package patterns.structural;
 
-import patterns.structural.filter.Person;
-import patterns.structural.filter.TypeCriteria;
-import patterns.structural.filter.classes.Criteria;
-import patterns.structural.filter.classes.impl.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import patterns.structural.composite.Employee;
 
 /**
  * Created on 19.08.16.
@@ -34,30 +28,57 @@ public class StartStructural {
 
 //---------------------------------------------- Filter ------------------------------------------------------
 
-        List<Person> personList = new ArrayList<>();
+//        List<Person> personList = new ArrayList<>();
+//
+//        personList.add(new Person("Mike", TypeCriteria.MALE, TypeCriteria.SINGLE));
+//        personList.add(new Person("Patrick", TypeCriteria.MALE, TypeCriteria.MARRIED));
+//        personList.add(new Person("Lora", TypeCriteria.FEMALE, TypeCriteria.SINGLE));
+//        personList.add(new Person("Diana", TypeCriteria.FEMALE, TypeCriteria.MARRIED));
+//        personList.add(new Person("Bob", TypeCriteria.MALE, TypeCriteria.SINGLE));
+//        personList.add(new Person("Rick", TypeCriteria.MALE, TypeCriteria.SINGLE));
+//
+//        Criteria male = new CriteriaMale();
+//        Criteria female = new CriteriaFemale();
+//        Criteria single = new CriteriaSingle();
+//        Criteria singleMale = new AndCriteria(single, male);
+//        Criteria singleOrFemale = new OrCriteria(single, female);
+//
+//        System.out.println("Males : ");
+//        Person.printPersons(male.meetCriteria(personList));
+//        System.out.println("Females : ");
+//        Person.printPersons(female.meetCriteria(personList));
+//        System.out.println("Single Males : ");
+//        Person.printPersons(singleMale.meetCriteria(personList));
+//        System.out.println("Single or Females : ");
+//        Person.printPersons(singleOrFemale.meetCriteria(personList));
 
-        personList.add(new Person("Mike", TypeCriteria.MALE, TypeCriteria.SINGLE));
-        personList.add(new Person("Patrick", TypeCriteria.MALE, TypeCriteria.MARRIED));
-        personList.add(new Person("Lora", TypeCriteria.FEMALE, TypeCriteria.SINGLE));
-        personList.add(new Person("Diana", TypeCriteria.FEMALE, TypeCriteria.MARRIED));
-        personList.add(new Person("Bob", TypeCriteria.MALE, TypeCriteria.SINGLE));
-        personList.add(new Person("Rick", TypeCriteria.MALE, TypeCriteria.SINGLE));
+//--------------------------------------------- Composite -----------------------------------------------------
 
-        Criteria male = new CriteriaMale();
-        Criteria female = new CriteriaFemale();
-        Criteria single = new CriteriaSingle();
-        Criteria singleMale = new AndCriteria(single, male);
-        Criteria singleOrFemale = new OrCriteria(single, female);
+        Employee CEO = new Employee("John", "CEO", 30000);
+        Employee headSales = new Employee("Robert", "Head Sales", 20000);
+        Employee headMarketing = new Employee("Michel", "Head Marketing", 20000);
 
-        System.out.println("Males : ");
-        Person.printPersons(male.meetCriteria(personList));
-        System.out.println("Females : ");
-        Person.printPersons(female.meetCriteria(personList));
-        System.out.println("Single Males : ");
-        Person.printPersons(singleMale.meetCriteria(personList));
-        System.out.println("Single or Females : ");
-        Person.printPersons(singleOrFemale.meetCriteria(personList));
+        Employee clerk1 = new Employee("Laura", "Clerk", 10000);
+        Employee clerk2 = new Employee("Bob", "Clerk", 10000);
 
+        Employee sales1 = new Employee("Richard", "Sales", 10000);
+        Employee sales2 = new Employee("Rob", "Sales", 10000);
 
+        CEO.add(headSales);
+        CEO.add(headMarketing);
+
+        headSales.add(sales1);
+        headSales.add(sales2);
+
+        headMarketing.add(clerk1);
+        headMarketing.add(clerk2);
+
+        System.out.println(CEO);
+        for (Employee headEmployee : CEO.getSubordinates()) {
+            System.out.println(headEmployee);
+            for (Employee employee : headEmployee.getSubordinates()) {
+                System.out.println(employee);
+            }
+        }
     }
 }
