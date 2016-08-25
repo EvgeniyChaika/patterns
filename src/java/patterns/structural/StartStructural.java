@@ -1,7 +1,7 @@
 package patterns.structural;
 
-import patterns.structural.flyweight.ShapeFactory;
-import patterns.structural.flyweight.impl.Circle;
+import patterns.structural.proxy.Image;
+import patterns.structural.proxy.impl.ProxyImage;
 
 /**
  * Created on 19.08.16.
@@ -108,13 +108,21 @@ public class StartStructural {
 
 //-------------------------------------------- Flyweight -----------------------------------------------------
 
-        for (int i = 0; i < 20; i++) {
-            Circle circle = (Circle) ShapeFactory.getCircle(ShapeFactory.getRandomColor());
+//        for (int i = 0; i < 20; i++) {
+//            Circle circle = (Circle) ShapeFactory.getCircle(ShapeFactory.getRandomColor());
+//
+//            circle.setX(ShapeFactory.getRandomX());
+//            circle.setY(ShapeFactory.getRandomY());
+//            circle.setRadius(ShapeFactory.getRandomRadius());
+//            circle.draw();
+//        }
 
-            circle.setX(ShapeFactory.getRandomX());
-            circle.setY(ShapeFactory.getRandomY());
-            circle.setRadius(ShapeFactory.getRandomRadius());
-            circle.draw();
-        }
+//---------------------------------------------- Proxy -------------------------------------------------------
+
+        Image image = new ProxyImage("foto.jpg");
+
+        image.display();
+        image.display();
+        image.display();
     }
 }
