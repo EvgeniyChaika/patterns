@@ -1,7 +1,7 @@
 package patterns.behavioral;
 
-import patterns.behavioral.interpreter.CheckExpression;
-import patterns.behavioral.interpreter.Expression;
+import patterns.behavioral.iterator.Iterator;
+import patterns.behavioral.iterator.impl.NameRepository;
 
 /**
  * Created on 25.08.16.
@@ -38,10 +38,19 @@ public class StartBehavioral {
 
 //------------------------------------------ Interpreter -----------------------------------------------------
 
-        Expression isMale = CheckExpression.getMaleExpression();
-        Expression isMarriedWoman = CheckExpression.getMarriedWomanExpression();
+//        Expression isMale = CheckExpression.getMaleExpression();
+//        Expression isMarriedWoman = CheckExpression.getMarriedWomanExpression();
+//
+//        System.out.println("John is male? " + isMale.interpret("John"));
+//        System.out.println("Julia is married woman? " + isMarriedWoman.interpret("Married Julia"));
 
-        System.out.println("John is male? " + isMale.interpret("John"));
-        System.out.println("Julia is married woman? " + isMarriedWoman.interpret("Married Julia"));
+//--------------------------------------------- Iterator -----------------------------------------------------
+
+        NameRepository namesRepository = new NameRepository();
+
+        for (Iterator iterator = namesRepository.getIterator(); iterator.hasNext(); ) {
+            String name = (String) iterator.next();
+            System.out.println("Name : " + name);
+        }
     }
 }
