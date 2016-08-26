@@ -1,6 +1,7 @@
 package patterns.behavioral;
 
-import patterns.behavioral.mediator.User;
+import patterns.behavioral.memento.CareTaker;
+import patterns.behavioral.memento.Originator;
 
 /**
  * Created on 25.08.16.
@@ -54,10 +55,27 @@ public class StartBehavioral {
 
 //--------------------------------------------- Mediator ----------------------------------------------------
 
-        User john = new User("John");
-        User robert = new User("Robert");
+//        User john = new User("John");
+//        User robert = new User("Robert");
+//
+//        john.sendMessage("Hi, Robert!");
+//        robert.sendMessage("Hi, John!");
 
-        john.sendMessage("Hi, Robert!");
-        robert.sendMessage("Hi, John!");
+//----------------------------------------------- Memento ---------------------------------------------------
+
+        Originator originator = new Originator();
+        CareTaker careTaker = new CareTaker();
+
+        originator.setState("State #1");
+        originator.setState("State #2");
+        careTaker.add(originator.saveStateMemento());
+        originator.setState("State #3");
+        careTaker.add(originator.saveStateMemento());
+        originator.setState("State #4");
+        System.out.println("Current state : " + originator.getState());
+        originator.getStateFromMemento(careTaker.get(0));
+        System.out.println("First saved state : " + originator.getState());
+        originator.getStateFromMemento(careTaker.get(1));
+        System.out.println("Second saved state : " + originator.getState());
     }
 }
