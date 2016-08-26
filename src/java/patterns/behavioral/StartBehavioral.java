@@ -1,9 +1,7 @@
 package patterns.behavioral;
 
-import patterns.behavioral.command.Broker;
-import patterns.behavioral.command.Stock;
-import patterns.behavioral.command.impl.BuyStock;
-import patterns.behavioral.command.impl.SellStock;
+import patterns.behavioral.interpreter.CheckExpression;
+import patterns.behavioral.interpreter.Expression;
 
 /**
  * Created on 25.08.16.
@@ -27,15 +25,23 @@ public class StartBehavioral {
 
 //-------------------------------------------- Command -------------------------------------------------------
 
-        Stock abcStock = new Stock();
+//        Stock abcStock = new Stock();
+//
+//        BuyStock buyStock = new BuyStock(abcStock);
+//        SellStock sellStock = new SellStock(abcStock);
+//
+//        Broker broker = new Broker();
+//
+//        broker.takeOrder(buyStock);
+//        broker.takeOrder(sellStock);
+//        broker.placeOrders();
 
-        BuyStock buyStock = new BuyStock(abcStock);
-        SellStock sellStock = new SellStock(abcStock);
+//------------------------------------------ Interpreter -----------------------------------------------------
 
-        Broker broker = new Broker();
+        Expression isMale = CheckExpression.getMaleExpression();
+        Expression isMarriedWoman = CheckExpression.getMarriedWomanExpression();
 
-        broker.takeOrder(buyStock);
-        broker.takeOrder(sellStock);
-        broker.placeOrders();
+        System.out.println("John is male? " + isMale.interpret("John"));
+        System.out.println("Julia is married woman? " + isMarriedWoman.interpret("Married Julia"));
     }
 }
