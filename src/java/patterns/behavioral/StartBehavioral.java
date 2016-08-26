@@ -1,7 +1,6 @@
 package patterns.behavioral;
 
-import patterns.behavioral.iterator.Iterator;
-import patterns.behavioral.iterator.impl.NameRepository;
+import patterns.behavioral.mediator.User;
 
 /**
  * Created on 25.08.16.
@@ -46,11 +45,19 @@ public class StartBehavioral {
 
 //--------------------------------------------- Iterator -----------------------------------------------------
 
-        NameRepository namesRepository = new NameRepository();
+//        NameRepository namesRepository = new NameRepository();
+//
+//        for (Iterator iterator = namesRepository.getIterator(); iterator.hasNext(); ) {
+//            String name = (String) iterator.next();
+//            System.out.println("Name : " + name);
+//        }
 
-        for (Iterator iterator = namesRepository.getIterator(); iterator.hasNext(); ) {
-            String name = (String) iterator.next();
-            System.out.println("Name : " + name);
-        }
+//--------------------------------------------- Mediator ----------------------------------------------------
+
+        User john = new User("John");
+        User robert = new User("Robert");
+
+        john.sendMessage("Hi, Robert!");
+        robert.sendMessage("Hi, John!");
     }
 }
