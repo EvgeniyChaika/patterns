@@ -1,8 +1,7 @@
 package patterns.behavioral;
 
-import patterns.behavioral.state.Context;
-import patterns.behavioral.state.impl.StartState;
-import patterns.behavioral.state.impl.StopState;
+import patterns.behavioral.nullobject.AbstractCustomer;
+import patterns.behavioral.nullobject.Customerfactory;
 
 /**
  * Created on 25.08.16.
@@ -94,14 +93,27 @@ public class StartBehavioral {
 
 //------------------------------------------------ State ---------------------------------------------------
 
-        Context context = new Context();
+//        Context context = new Context();
+//
+//        StartState startState = new StartState();
+//        startState.doAction(context);
+//        System.out.println(context.getState().toString());
+//
+//        StopState stopState = new StopState();
+//        stopState.doAction(context);
+//        System.out.println(context.getState().toString());
 
-        StartState startState = new StartState();
-        startState.doAction(context);
-        System.out.println(context.getState().toString());
+//---------------------------------------------- Null Object ----------------------------------------------
 
-        StopState stopState = new StopState();
-        stopState.doAction(context);
-        System.out.println(context.getState().toString());
+        AbstractCustomer abstractCustomer1 = Customerfactory.getCustomer("Rob");
+        AbstractCustomer abstractCustomer2 = Customerfactory.getCustomer("Bob");
+        AbstractCustomer abstractCustomer3 = Customerfactory.getCustomer("Julia");
+        AbstractCustomer abstractCustomer4 = Customerfactory.getCustomer("Nick");
+
+        System.out.println("Customers :");
+        System.out.println(abstractCustomer1.getName());
+        System.out.println(abstractCustomer2.getName());
+        System.out.println(abstractCustomer3.getName());
+        System.out.println(abstractCustomer4.getName());
     }
 }
