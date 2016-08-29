@@ -1,7 +1,9 @@
 package patterns.behavioral;
 
-import patterns.behavioral.nullobject.AbstractCustomer;
-import patterns.behavioral.nullobject.Customerfactory;
+import patterns.behavioral.strategy.Context;
+import patterns.behavioral.strategy.impl.OperationAdd;
+import patterns.behavioral.strategy.impl.OperationMultiply;
+import patterns.behavioral.strategy.impl.OperationSubtract;
 
 /**
  * Created on 25.08.16.
@@ -105,15 +107,26 @@ public class StartBehavioral {
 
 //---------------------------------------------- Null Object ----------------------------------------------
 
-        AbstractCustomer abstractCustomer1 = Customerfactory.getCustomer("Rob");
-        AbstractCustomer abstractCustomer2 = Customerfactory.getCustomer("Bob");
-        AbstractCustomer abstractCustomer3 = Customerfactory.getCustomer("Julia");
-        AbstractCustomer abstractCustomer4 = Customerfactory.getCustomer("Nick");
+//        AbstractCustomer abstractCustomer1 = Customerfactory.getCustomer("Rob");
+//        AbstractCustomer abstractCustomer2 = Customerfactory.getCustomer("Bob");
+//        AbstractCustomer abstractCustomer3 = Customerfactory.getCustomer("Julia");
+//        AbstractCustomer abstractCustomer4 = Customerfactory.getCustomer("Nick");
+//
+//        System.out.println("Customers :");
+//        System.out.println(abstractCustomer1.getName());
+//        System.out.println(abstractCustomer2.getName());
+//        System.out.println(abstractCustomer3.getName());
+//        System.out.println(abstractCustomer4.getName());
 
-        System.out.println("Customers :");
-        System.out.println(abstractCustomer1.getName());
-        System.out.println(abstractCustomer2.getName());
-        System.out.println(abstractCustomer3.getName());
-        System.out.println(abstractCustomer4.getName());
+//------------------------------------------------ Strategy -----------------------------------------------
+
+        Context context = new Context(new OperationAdd());
+        System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
+
+        context = new Context(new OperationMultiply());
+        System.out.println("10 x 5 = " + context.executeStrategy(10, 5));
+
+        context = new Context(new OperationSubtract());
+        System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
     }
 }
