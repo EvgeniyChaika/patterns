@@ -1,6 +1,6 @@
-package patterns.structural.frontcontroller.impl;
+package patterns.J2EE.frontcontroller.impl;
 
-import patterns.structural.frontcontroller.View;
+import patterns.J2EE.frontcontroller.View;
 
 /**
  * Created on 29.08.16.

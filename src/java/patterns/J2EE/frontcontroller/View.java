@@ -1,4 +1,4 @@
-package patterns.structural.frontcontroller;
+package patterns.J2EE.frontcontroller;
 
 /**
  * Created on 29.08.16.
