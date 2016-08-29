@@ -1,15 +1,11 @@
 package patterns.behavioral;
 
-import patterns.behavioral.visitor.computerpart.ComputerPart;
-import patterns.behavioral.visitor.computerpart.impl.Computer;
-import patterns.behavioral.visitor.computerpartvisitor.impl.ComputerPartDisplayVisitor;
-
 /**
  * Created on 25.08.16.
  */
 public class StartBehavioral {
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
 
 //------------------------------------ Chain of responsibility -----------------------------------------------
 
@@ -137,7 +133,7 @@ public class StartBehavioral {
 
 //-------------------------------------------------- Visitor ----------------------------------------------
 
-        ComputerPart computerPart = new Computer();
-        computerPart.accept(new ComputerPartDisplayVisitor());
-    }
+//        ComputerPart computerPart = new Computer();
+//        computerPart.accept(new ComputerPartDisplayVisitor());
+//    }
 }

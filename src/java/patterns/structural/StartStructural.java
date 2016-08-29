@@ -1,11 +1,13 @@
 package patterns.structural;
 
+import patterns.structural.frontcontroller.FrontController;
+
 /**
  * Created on 19.08.16.
  */
 public class StartStructural {
 
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 
 //--------------------------------------------- Adapter ------------------------------------------------------
 
@@ -121,5 +123,12 @@ public class StartStructural {
 //        image.display();
 //        image.display();
 //        image.display();
-//    }
+
+//------------------------------------------ Front Controller ------------------------------------------------
+
+        FrontController frontController = new FrontController();
+        frontController.dispatchRequest("Home");
+        frontController.dispatchRequest("Student");
+        frontController.dispatchRequest("Worker");
+    }
 }
