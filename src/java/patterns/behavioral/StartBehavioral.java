@@ -1,9 +1,8 @@
 package patterns.behavioral;
 
-import patterns.behavioral.observer.Subject;
-import patterns.behavioral.observer.ext.BinaryObserver;
-import patterns.behavioral.observer.ext.HexObserver;
-import patterns.behavioral.observer.ext.OctalObserver;
+import patterns.behavioral.state.Context;
+import patterns.behavioral.state.impl.StartState;
+import patterns.behavioral.state.impl.StopState;
 
 /**
  * Created on 25.08.16.
@@ -82,15 +81,27 @@ public class StartBehavioral {
 
 //----------------------------------------------- Observer -------------------------------------------------
 
-        Subject subject = new Subject();
+//        Subject subject = new Subject();
+//
+//        new HexObserver(subject);
+//        new OctalObserver(subject);
+//        new BinaryObserver(subject);
+//
+//        System.out.println("First state change : 15");
+//        subject.setState(15);
+//        System.out.println("First state change : 10");
+//        subject.setState(10);
 
-        new HexObserver(subject);
-        new OctalObserver(subject);
-        new BinaryObserver(subject);
+//------------------------------------------------ State ---------------------------------------------------
 
-        System.out.println("First state change : 15");
-        subject.setState(15);
-        System.out.println("First state change : 10");
-        subject.setState(10);
+        Context context = new Context();
+
+        StartState startState = new StartState();
+        startState.doAction(context);
+        System.out.println(context.getState().toString());
+
+        StopState stopState = new StopState();
+        stopState.doAction(context);
+        System.out.println(context.getState().toString());
     }
 }
