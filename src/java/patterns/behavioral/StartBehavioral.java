@@ -1,8 +1,8 @@
 package patterns.behavioral;
 
-import patterns.behavioral.templatemethod.Game;
-import patterns.behavioral.templatemethod.ext.Cricket;
-import patterns.behavioral.templatemethod.ext.Football;
+import patterns.behavioral.visitor.computerpart.ComputerPart;
+import patterns.behavioral.visitor.computerpart.impl.Computer;
+import patterns.behavioral.visitor.computerpartvisitor.impl.ComputerPartDisplayVisitor;
 
 /**
  * Created on 25.08.16.
@@ -130,9 +130,14 @@ public class StartBehavioral {
 
 //--------------------------------------------- Template method -------------------------------------------
 
-        Game game = new Cricket();
-        game.play();
-        game = new Football();
-        game.play();
+//        Game game = new Cricket();
+//        game.play();
+//        game = new Football();
+//        game.play();
+
+//-------------------------------------------------- Visitor ----------------------------------------------
+
+        ComputerPart computerPart = new Computer();
+        computerPart.accept(new ComputerPartDisplayVisitor());
     }
 }
