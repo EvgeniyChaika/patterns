@@ -1,9 +1,8 @@
 package patterns.behavioral;
 
-import patterns.behavioral.strategy.Context;
-import patterns.behavioral.strategy.impl.OperationAdd;
-import patterns.behavioral.strategy.impl.OperationMultiply;
-import patterns.behavioral.strategy.impl.OperationSubtract;
+import patterns.behavioral.templatemethod.Game;
+import patterns.behavioral.templatemethod.ext.Cricket;
+import patterns.behavioral.templatemethod.ext.Football;
 
 /**
  * Created on 25.08.16.
@@ -120,13 +119,20 @@ public class StartBehavioral {
 
 //------------------------------------------------ Strategy -----------------------------------------------
 
-        Context context = new Context(new OperationAdd());
-        System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
+//        Context context = new Context(new OperationAdd());
+//        System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
+//
+//        context = new Context(new OperationMultiply());
+//        System.out.println("10 x 5 = " + context.executeStrategy(10, 5));
+//
+//        context = new Context(new OperationSubtract());
+//        System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
 
-        context = new Context(new OperationMultiply());
-        System.out.println("10 x 5 = " + context.executeStrategy(10, 5));
+//--------------------------------------------- Template method -------------------------------------------
 
-        context = new Context(new OperationSubtract());
-        System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
+        Game game = new Cricket();
+        game.play();
+        game = new Football();
+        game.play();
     }
 }
