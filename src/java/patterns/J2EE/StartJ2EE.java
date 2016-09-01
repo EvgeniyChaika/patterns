@@ -1,7 +1,6 @@
 package patterns.J2EE;
 
-import patterns.J2EE.businessdelegate.BusinessDelegate;
-import patterns.J2EE.businessdelegate.Client;
+import patterns.J2EE.compositeentity.Client;
 
 /**
  * Created on 29.08.16.
@@ -22,16 +21,25 @@ public class StartJ2EE {
 
 //----------------------------------------- Business Delegate -------------------------------------------------
 
-        BusinessDelegate businessDelegate = new BusinessDelegate();
-        businessDelegate.setServiceType("EJB");
+//        BusinessDelegate businessDelegate = new BusinessDelegate();
+//        businessDelegate.setServiceType("EJB");
+//
+//        Client client = new Client(businessDelegate);
+//        client.doTask();
+//
+//        businessDelegate.setServiceType("JMS");
+//        client.doTask();
 
-        Client client = new Client(businessDelegate);
-        client.doTask();
+//-------------------------------------------Composite Entity -------------------------------------------------
 
-        businessDelegate.setServiceType("JMS");
-        client.doTask();
+        Client client = new Client();
 
-//------------------------------------------ Front Controller ------------------------------------------------
+        client.setData("Test", "Data");
+        client.printData();
+        client.setData("Second test", "New data");
+        client.printData();
+
+//------------------------------------------ Front Controller -------------------------------------------------
 
 //        FrontController frontController = new FrontController();
 //        frontController.dispatchRequest("Home");
