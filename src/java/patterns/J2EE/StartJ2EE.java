@@ -1,10 +1,7 @@
 package patterns.J2EE;
 
-import patterns.J2EE.interceptingfilter.Client;
-import patterns.J2EE.interceptingfilter.FilterManager;
-import patterns.J2EE.interceptingfilter.Target;
-import patterns.J2EE.interceptingfilter.impl.AuthenticationFilter;
-import patterns.J2EE.interceptingfilter.impl.DebugFilter;
+import patterns.J2EE.servicelocator.Service;
+import patterns.J2EE.servicelocator.ServiceLocator;
 
 /**
  * Created on 29.08.16.
@@ -67,13 +64,25 @@ public class StartJ2EE {
 
 //----------------------------------------- Intercepting Filter -----------------------------------------------
 
-        FilterManager filterManager = new FilterManager(new Target());
+//        FilterManager filterManager = new FilterManager(new Target());
+//
+//        filterManager.setFilter(new AuthenticationFilter());
+//        filterManager.setFilter(new DebugFilter());
+//
+//        Client client = new Client();
+//        client.setFilterManager(filterManager);
+//        client.sendRequest("HOME");
 
-        filterManager.setFilter(new AuthenticationFilter());
-        filterManager.setFilter(new DebugFilter());
+//------------------------------------------- Service Locator -------------------------------------------------
 
-        Client client = new Client();
-        client.setFilterManager(filterManager);
-        client.sendRequest("HOME");
+        Service service = ServiceLocator.getService("Service1");
+
+        service.execute();
+        service = ServiceLocator.getService("Service2");
+        service.execute();
+        service = ServiceLocator.getService("Service1");
+        service.execute();
+        service = ServiceLocator.getService("Service2");
+        service.execute();
     }
 }
