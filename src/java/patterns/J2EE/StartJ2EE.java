@@ -1,7 +1,7 @@
 package patterns.J2EE;
 
-import patterns.J2EE.servicelocator.Service;
-import patterns.J2EE.servicelocator.ServiceLocator;
+import patterns.J2EE.transferobject.StudentBO;
+import patterns.J2EE.transferobject.StudentVO;
 
 /**
  * Created on 29.08.16.
@@ -75,14 +75,29 @@ public class StartJ2EE {
 
 //------------------------------------------- Service Locator -------------------------------------------------
 
-        Service service = ServiceLocator.getService("Service1");
+//        Service service = ServiceLocator.getService("Service1");
+//
+//        service.execute();
+//        service = ServiceLocator.getService("Service2");
+//        service.execute();
+//        service = ServiceLocator.getService("Service1");
+//        service.execute();
+//        service = ServiceLocator.getService("Service2");
+//        service.execute();
 
-        service.execute();
-        service = ServiceLocator.getService("Service2");
-        service.execute();
-        service = ServiceLocator.getService("Service1");
-        service.execute();
-        service = ServiceLocator.getService("Service2");
-        service.execute();
+//--------------------------------------------- Transfer Object -----------------------------------------------
+
+        StudentBO studentBusinessObject = new StudentBO();
+
+        for (StudentVO student : studentBusinessObject.getAllStudents()) {
+            System.out.println("Student : RollNo " + student.getRollNo() + ", Name " + student.getName());
+        }
+
+        StudentVO studentVO = studentBusinessObject.getStudent(0);
+        studentVO.setName("John");
+        studentBusinessObject.updateStudent(studentVO);
+
+        studentVO = studentBusinessObject.getStudent(0);
+        System.out.println("Student : RollNo " + studentVO.getRollNo() + ", Name " + studentVO.getName());
     }
 }
